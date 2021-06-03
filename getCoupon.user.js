@@ -84,20 +84,21 @@ const sleep = (ms) => {
     } catch (error) {
         console.log(error);
     }
+
+    function startBtnAppend (elem, btn){
+        if (elem != null) {
+            elem.appendChild(btn);
+        }
+    }
+    
+    function getTime() {
+        return new Date().toLocaleString('zh-TW', {
+            timeZone: 'Asia/Taipei',
+            hourCycle: 'h23',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+    }
 })()
 
-var startBtnAppend = function(elem, btn){
-    if (elem != null) {
-        elem.appendChild(btn);
-    }
-}
-
-var getTime = function() {
-    return new Date().toLocaleString('zh-TW', {
-        timeZone: 'Asia/Taipei',
-        hourCycle: 'h23',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-}
