@@ -16,11 +16,20 @@ const sleep = (ms) => {
 (async () => {
     try {
         let eventTimes = [{
-            "startTime": "09:05:00",
-            "endTime": "09:05:59"
+            "startTime": "08:59:55",
+            "endTime": "09:00:05"
         }, {
             "startTime": "11:59:55",
             "endTime": "12:00:05"
+        }, {
+            "startTime": "14:59:55",
+            "endTime": "15:00:05"
+        }, {
+            "startTime": "19:59:55",
+            "endTime": "20:00:05"
+        }, {
+            "startTime": "23:59:55",
+            "endTime": "00:00:05"
         }];
 
         // 確定下方按鈕列出現後才執行
