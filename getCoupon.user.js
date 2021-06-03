@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         京東搶券
-// @version      1.1
+// @version      1.2
 // @description  Get coupon
 // @author       Neal Liu
 // @match        https://pro.jd.com/mall/active/*/index.html
@@ -34,28 +34,26 @@ const sleep = (ms) => {
         let btnStart = document.createElement('button');
         btnStart.innerHTML = 'Get coupon';
         btnStart.className = 'oui-button oui-button-danger J-trigger jdm-toolbar-tab';
-
+        btnStart.style.height = '50px'; 
+        btnStart.style.background = 'lightgreen';
+      
         btnStart.addEventListener('click', () => {
-
             setInterval(() => {
                 eventTimes.forEach(function(eventTime) {
                     if (getTime() > eventTime.startTime && getTime() < eventTime.endTime) {
                         console.log('Start getting...');
                         btnStart.innerHTML = 'Getting...';
                         btnStart.disabled = true;
-
-                        if (document.querySelectorAll('.use_btn').length > 0) {
-                            document.querySelectorAll('.use_btn').forEach(function(btn) {
+                      
+                      //過濾已領取優惠券
+                      //618主會場(藍:運費券，紅:全品類)/61好店鉅惠開門紅/新人188大禮包
+                        if (document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)") > 0) {
+                            document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)").forEach(function(btn) {
                                 console.log(btn);
                                 btn.click();
                             });
                         }
-                        if (document.querySelectorAll('.coupon_receive_btn').length > 0) {
-                            document.querySelectorAll('.coupon_receive_btn').forEach(function(btn) {
-                                console.log(btn);
-                                btn.click();
-                            });
-                        }
+                      //領券中心
                         if (document.querySelectorAll('.btn-def').length > 0) {
                             document.querySelectorAll('.btn-def').forEach(function(btn) {
                                 console.log(btn);
