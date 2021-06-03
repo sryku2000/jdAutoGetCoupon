@@ -16,7 +16,7 @@ const sleep = (ms) => {
 
 (async () => {
     try {
-        let eventTimes = [{"startTime":"09:05:00","endTime":"09:05:59"},{"startTime":"11:59:55","endTime":"12:00:05"}];
+        let eventTimes = [{"startTime":"08:59:55","endTime":"09:00:05"},{"startTime":"11:59:55","endTime":"12:00:05"}];
 
         // 確定下方按鈕列出現後才執行
         while (!document.querySelector('.jdm-toolbar-footer') && !document.querySelector('.ui-slidebar-new'))
