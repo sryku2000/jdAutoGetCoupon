@@ -15,3 +15,11 @@ ___
 > https://pro.jd.com/mall/active/3G7k9LRGDCqEP5ZAbEzZTv82aG3C/index.html
 4. #### 領券中心
 > https://a.jd.com/
+
+
+
+
+# Create Oracle Cloud
+
+# 自動安裝版本
+ https://github.com/sryku2000/jdAutoGetCoupon/raw/main/createOracleCloudVM.user.js
