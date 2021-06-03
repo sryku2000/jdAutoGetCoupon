@@ -28,7 +28,7 @@ const sleep = (ms) => {
             "startTime": "19:59:55",
             "endTime": "20:00:05"
         }, {
-            "startTime": "23:59:55",
+            "startTime": "00:00:00",
             "endTime": "00:00:05"
         }];
 
