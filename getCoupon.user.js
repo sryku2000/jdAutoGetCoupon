@@ -46,61 +46,50 @@ const sleep = (ms) => {
         let btnStart = document.createElement('button');
         btnStart.innerHTML = 'Get coupon';
         btnStart.className = 'oui-button oui-button-danger J-trigger jdm-toolbar-tab';
-        btnStart.style.height = '50px'; 
+        btnStart.style.height = '50px';
         btnStart.style.background = 'lightgreen';
-      
+
         btnStart.addEventListener('click', () => {
             setInterval(() => {
-                eventTimes.forEach(function(eventTime) {
-                    if (getTime() > eventTime.startTime && getTime() < eventTime.endTime) {
-                        console.log('Start getting...');
-                        btnStart.innerHTML = 'Getting...';
-                        btnStart.disabled = true;
-                      
-                      //過濾已領取優惠券
-                      //618主會場(藍:運費券，紅:全品類)/61好店鉅惠開門紅/新人188大禮包
-                        if (document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)") > 0) {
-                            document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)").forEach(function(btn) {
-                                console.log(btn);
-                                btn.click();
-                            });
-                        }
-                      //領券中心
-                        if (document.querySelectorAll('.btn-def').length > 0) {
-                            document.querySelectorAll('.btn-def').forEach(function(btn) {
-                                console.log(btn);
-                                btn.click();
-                            });
-                        }
-                        let now = new Date().toLocaleString('zh-TW', {
-                            timeZone: 'Asia/Taipei',
-                            hourCycle: 'h23',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                            second: '2-digit'
-                        });
-                        btnStart.innerHTML = 'Get...' + now;
+                if (eventTimes.filter(data => (data.startTime < getTime() && getTime() < data.endTime)).length > 0) {
+                    console.log('Start getting...');
+                    btnStart.innerHTML = 'Getting...';
+                    btnStart.disabled = true;
 
-                    } else {
-                        console.log(new Date() + 'It is not the time.');
+                    //過濾已領取優惠券
+                    //618主會場(藍:運費券，紅:全品類)/618好店鉅惠開門紅/新人188大禮包
+                    if (document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)").length > 0) {
+                        document.querySelectorAll(".coupon-item.no-illus:not(.coupon_receive):not(.coupon_today_receive)").forEach(function (btn) {
+                            btn.click();
+                        });
                     }
-                });
+                    //領券中心
+                    if (document.querySelectorAll('.btn-def').length > 0) {
+                        document.querySelectorAll('.btn-def').forEach(function (btn) {
+                            btn.click();
+                        });
+                    }
+                    btnStart.innerHTML = 'Getting...' + getTime();
+
+                } else {
+                    console.log(new Date() + '--It is not the time.');
+                };
             }, 1000);
         })
 
-        startBtnAppend(footerPanel_618,btnStart);
-        startBtnAppend(footerPanel_coupon_center,btnStart);
+        startBtnAppend(footerPanel_618, btnStart);
+        startBtnAppend(footerPanel_coupon_center, btnStart);
 
     } catch (error) {
         console.log(error);
     }
 
-    function startBtnAppend (elem, btn){
+    function startBtnAppend(elem, btn) {
         if (elem != null) {
             elem.appendChild(btn);
         }
     }
-    
+
     function getTime() {
         return new Date().toLocaleString('zh-TW', {
             timeZone: 'Asia/Taipei',
