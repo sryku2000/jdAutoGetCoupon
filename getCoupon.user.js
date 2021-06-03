@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         京東搶券
-// @version      1.0.1
+// @version      1.1
 // @description  Get coupon
 // @author       Neal Liu
 // @match        https://pro.jd.com/mall/active/*/index.html
