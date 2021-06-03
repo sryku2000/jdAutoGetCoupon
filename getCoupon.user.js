@@ -1,12 +1,15 @@
 // ==UserScript==
 // @name         京東搶券
-// @version      1.2
+// @version      1.3
 // @description  Get coupon
 // @author       Neal Liu
 // @match        https://pro.jd.com/mall/active/*/index.html
 // @match        https://a.jd.com/*
 // @run-at       document-body
 // @grant        none
+// @homepageURL  https://github.com/sryku2000/jdAutoGetCoupon
+// @updateURL    https://github.com/sryku2000/jdAutoGetCoupon/raw/main/getCoupon.user.js
+// @downloadURL  https://github.com/sryku2000/jdAutoGetCoupon/raw/main/getCoupon.user.js
 // ==/UserScript==
 const sleep = (ms) => {
     console.log(`[SLEEP] ${ms}ms`);
