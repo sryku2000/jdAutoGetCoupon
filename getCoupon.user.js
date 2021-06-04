@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         京東搶券
-// @version      1.4
+// @version      1.5
 // @description  Get coupon
 // @author       Neal Liu
 // @match        https://pro.jd.com/mall/active/*/index.html
@@ -21,6 +21,9 @@ const sleep = (ms) => {
         let eventTimes = [{
             "startTime": "08:59:55",
             "endTime": "09:00:05"
+        }, {
+            "startTime": "09:59:55",
+            "endTime": "10:00:05"
         }, {
             "startTime": "11:59:55",
             "endTime": "12:00:05"
