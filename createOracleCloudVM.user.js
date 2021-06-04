@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Oracle Cloud 建虛擬機 + Skip Timeout
-// @version      2.0 
+// @version      2.1 
 // @description  Get Free VM
 // @author       Eason Lin
 // @match        https://cloud.oracle.com/compute/instances/create*
@@ -56,7 +56,7 @@ if (location.href.includes('compute.plugins.oci.oraclecloud.com')) {
     let log = document.createElement('div');
     log.id = 'GM_log';
     //讀取上次記錄
-    log.innerHTML = '上次最後執行時間：' + getLSItem('execTime');
+    log.innerHTML = `上次開始時間： ${getLSItem('startTime')}<br>上次最後執行時間： ${getLSItem('execTime')}`;
     document.body.appendChild(log);
     (async () => {
         try {
@@ -70,13 +70,14 @@ if (location.href.includes('compute.plugins.oci.oraclecloud.com')) {
             btnStart.innerHTML = 'Do Big Things';
             btnStart.className = 'oui-button oui-button-danger';
             btnStart.addEventListener('click', async () => {
+                localStorage.setItem('startTime', getFullNow());
                 document.querySelector('.oui-button-primary').click();
                 btnStart.innerHTML = 'Doing Big Things';
                 btnStart.disabled = true;
                 setInterval(() => {
                     document.querySelector('.oui-button-primary').click();
                     btnStart.innerHTML = 'Doing Big Things';
-                    log.innerHTML = '最近執行時間：' + getNow();
+                    log.innerHTML = `開始時間：${getLSItem('startTime')}<br>最近執行時間：${getNow()}`;
                     localStorage.setItem('execTime', getFullNow());
                 }, 5000);
                 // 隨機秒數，上下捲動頁面
