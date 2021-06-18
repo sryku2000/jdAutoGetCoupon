@@ -4,6 +4,7 @@
 // @description  Get coupon
 // @author       Neal Liu
 // @match        https://pro.jd.com/mall/active/*/index.html
+// @match        https://pro.m.jd.com/mall/active*
 // @match        https://a.jd.com/*
 // @run-at       document-body
 // @grant        none
@@ -39,11 +40,12 @@ const sleep = (ms) => {
         }];
 
         // 確定下方按鈕列出現後才執行
-        while (!document.querySelector('.jdm-toolbar-footer') && !document.querySelector('.ui-slidebar-new'))
+        while (!document.querySelector('.jdm-toolbar-footer') && !document.querySelector('.ui-slidebar-new') && !document.querySelector('#J_babelOptPage > div > div.bab_opt_mod.bab_opt_mod_1_0.module_undefined.floatLayer > div'))
             await sleep(1000);
 
         let footerPanel_618 = document.querySelector('.jdm-toolbar-footer');
         let footerPanel_coupon_center = document.querySelector('.ui-slidebar-new');
+        let open_app_btn = document.querySelector('#J_babelOptPage > div > div.bab_opt_mod.bab_opt_mod_1_0.module_undefined.floatLayer > div');
 
         // 加入按鈕
         let btnStart = document.createElement('button');
@@ -72,6 +74,12 @@ const sleep = (ms) => {
                             btn.click();
                         });
                     }
+
+                    if (document.querySelectorAll('.button_can_click').length >0) {
+                        document.querySelectorAll('.button_can_click').forEach(function (btn) {
+                            btn.click();
+                        });
+                    }
                     btnStart.innerHTML = 'Getting...' + getTime();
 
                 } else {
@@ -82,6 +90,7 @@ const sleep = (ms) => {
 
         startBtnAppend(footerPanel_618, btnStart);
         startBtnAppend(footerPanel_coupon_center, btnStart);
+        startBtnAppend(open_app_btn, btnStart);
 
     } catch (error) {
         console.log(error);
