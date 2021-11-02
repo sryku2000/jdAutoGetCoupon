@@ -32,6 +32,11 @@ const sleep = (ms) => {
                 "endTime": "20:00:05"
             }];
 
+            let eventTimesEverydayTenClock = [{
+                "startTime": "09:59:55",
+                "endTime": "10:00:05"
+            }];
+
             // 確定下方按鈕列出現後才執行
             while (!document.querySelector('.fl'))
                 await sleep(1000);
@@ -64,7 +69,24 @@ const sleep = (ms) => {
                     } else {
                         console.log(new Date() + '--It is not the time.');
                     };
-                }, 1000);
+
+                    if (eventTimesEverydayTenClock.filter(data => (data.startTime < getTime() && getTime() < data.endTime)).length > 0) {
+                        console.log('Start getting...');
+                        btnStart.innerHTML = 'Getting...';
+                        btnStart.disabled = true;
+
+                        if ($(".J_couponArea[data-start-time=1635300000]").length > 0) {
+                            $(".J_couponArea[data-start-time=1635300000]").each(function() { $(this).click(); });
+                        }
+
+                        btnStart.innerHTML = 'Getting...' + getTime();
+
+                    } else {
+                        console.log(new Date() + '--It is not the time.');
+                    };
+
+
+                }, 100);
             })
 
             startBtnAppend(footerPanel_618, btnStart);
