@@ -17,3 +17,7 @@ ___
 
 # 自動安裝版本
  https://github.com/sryku2000/jdAutoGetCoupon/raw/main/createOracleCloudVM.user.js
+
+ # 自動安裝小米版本
+ https://github.com/sryku2000/jdAutoGetCoupon/raw/main/getMiCoupon.user.js
+ 
